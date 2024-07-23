@@ -42,7 +42,7 @@ library(dplyr)
 library(plotly)
 library(lubridate)
 
-artik <- artik |> drop_na() |> filter(temperature > 25) |> mutate(humidity_level = factor(if_else(humidity < 30, "Too low", "Normal")))
+artik <- artik |> drop_na() |> filter(temperature > 30) |> mutate(humidity_level = factor(if_else(humidity < 30, "Too low", "Normal")))
 
 p <- ggplot(artik, aes(x = time, y = temperature, alpha = 0.5)) + geom_point(aes(color = humidity_level)) + scale_color_manual(values = c("Too low" = "firebrick1", "Normal" = "steelblue1")) + theme_bw() + labs(color = "Humidity level", x = "Time", y = "Temperature") + scale_alpha_continuous(guide = "none") + scale_x_datetime(
     limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
@@ -81,5 +81,3 @@ p_circular <- artik |> drop_na() |> mutate(direction = factor(direction, levels 
 
 print(p_circular) 
 ```
-
-

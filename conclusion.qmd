@@ -27,14 +27,12 @@ data |> drop_na() |> ggplot(aes(x=humidity, fill=device)) + geom_histogram(binwi
 ```
 
 ```{r tes2, message=FALSE, warning=FALSE}
-data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>25, temperature-humidity, 0), .before=1)
-print(data)
-
 library(gganimate)
 library(hrbrthemes)
 library(ggplot2)
+library(gifski)
 
-plot <- data |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level") + transition_reveal(time)
+plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, temperature-humidity, 0), .before=1) |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level") + transition_reveal(time)
 
 animated_plot <- animate(plot, nframes = 100, fps = 10, renderer = gifski_renderer())
 
