@@ -1,0 +1,19 @@
+---
+title: "Final"
+execute:
+  echo: false
+---
+
+```{r message=FALSE}
+library(tidyverse)
+artik <- read_csv("artik.csv")
+ashotsk <- read_csv("ashotsk.csv")
+azatan <- read_csv("azatan.csv")
+gavar <- read_csv("gavar.csv")
+maralik <- read_csv("maralik.csv")
+panik <- read_csv("panik.csv")
+sevan <- read_csv("sevan.csv")
+vazgen <- read_csv("vazgen.csv")
+```
+
+

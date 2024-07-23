@@ -1,0 +1,41 @@
+project:
+  type: website
+
+website:
+  title: "Final Project"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Data Analysis
+        menu:
+        - href: artik.qmd
+          text: Artik
+        - href: ashotsk.qmd
+          text: Ashotsk
+        - href: azatan.qmd
+          text: Azatan
+        - href: gavar.qmd
+          text: Gavar
+        - href: maralik.qmd
+          text: Maralik
+        - href: panik.qmd
+          text: Panik
+        - href: sevan.qmd
+          text: Sevan
+        - href: vazgen.qmd
+          text: Vazgen Sargsyan school
+        - href: conclusion.qmd
+          text: Conclusion
+      - href: sources.qmd
+        text: "Sources"
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
