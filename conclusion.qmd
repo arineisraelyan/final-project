@@ -5,7 +5,7 @@ execute:
   echo: false
 ---
 
-```{r message=FALSE, warning=FALSE}
+```{r te44s, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(dplyr)
 artik <- read_csv("artik.csv")
@@ -22,16 +22,24 @@ data |> drop_na() |> ggplot(aes(x=temperature, fill=device, color=device)) + geo
 
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r tes3, message=FALSE, warning=FALSE}
 data |> drop_na() |> ggplot(aes(x=humidity, fill=device)) + geom_histogram(binwidth=1) + labs(fill="Area", color="Area", x="Humidity", y="Density") + scale_fill_manual(values=rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school")) + theme_minimal() 
 ```
 
-```{r message=FALSE, warning=FALSE}
-data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>25, temperature-humidity, NA), .before=1)
+```{r tes2, message=FALSE, warning=FALSE}
+data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>25, temperature-humidity, 0), .before=1)
 print(data)
 
 library(gganimate)
-plot |> ggplot(aes(x=time, y=humidity_danger))
+library(hrbrthemes)
+library(ggplot2)
+
+plot <- data |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level") + transition_reveal(time)
+
+animated_plot <- animate(plot, nframes = 100, fps = 10, renderer = gifski_renderer())
+
+anim_save("humidity_danger_animation.gif", animated_plot)
+
+print(animated_plot)
+
 ```
-
-
