@@ -31,13 +31,17 @@ library(gganimate)
 library(hrbrthemes)
 library(ggplot2)
 library(gifski)
+library(lubridate)
+library(knitr)
 
-plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, temperature-humidity, 0), .before=1) |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level") + transition_reveal(time)
+plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, temperature-humidity, 0), .before=1) |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device, alpha=0.5)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level", color="Device") + transition_reveal(time) + scale_x_datetime(
+    limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
+    date_labels = "%b %d"
+  ) + scale_alpha_continuous(guide = "none") + scale_color_manual(values=rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school"))
 
 animated_plot <- animate(plot, nframes = 100, fps = 10, renderer = gifski_renderer())
 
 anim_save("humidity_danger_animation.gif", animated_plot)
 
-print(animated_plot)
-
+knitr::include_graphics("humidity_danger_animation.gif")
 ```

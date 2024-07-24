@@ -13,13 +13,13 @@ artik <- read_csv("artik.csv")
 
 Artik is a town in the Artik Municipality of the Shirak Province of Armenia.
 
-Now we will explore the fire causes probability in Artik, going through data provided by Tumo. The graph below represents the temperature and humidity flow during May-July 2024. As you can see, there is no information in the start of June, because the device was broken. The danger humidity level was registered from the middle of June to the start of July.
+Now we will explore the fire causes probability in Artik, going through data provided by Tumo Climate Net. The graph below represents the temperature and humidity flow during May-July 2024. As you can see, there is no information in the start of June, because the device was broken. Dangerous humidity level was registered from the middle of June to the start of July.
 
 ```{r message=FALSE}
 library(ggplot2)
 library(dplyr)
 library(patchwork)
-p1 <- artik |> drop_na() |> ggplot(aes(x=time, y=temperature)) + geom_line(color="darkblue") + geom_smooth(color="white") + theme_minimal() + labs(x=NULL, y="Temperatue", title="Temperature and Humidity in Artik") + scale_x_datetime(
+p1 <- artik |> drop_na() |> ggplot(aes(x=time, y=temperature)) + geom_line(color="darkblue") + geom_smooth(color="white") + theme_minimal() + labs(subtitle="Dangerous humidity level was registered from the middle of June to the start of July", x=NULL, y="Temperatue", title="Temperature and Humidity in Artik") + scale_x_datetime(
     limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
     date_labels = "%b %d"
   )
@@ -34,7 +34,7 @@ combined_plot <- p1/p2
 print(combined_plot)
 ```
 
-Humidity level is considered to be low when being lower than 30 percents. The graph below represents the humidity level when the temperature is above 25 C (May-July 2024).
+Humidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Artik when the temperature is above 30 C (May-July 2024).
 
 ```{r message=FALSE}
 library(ggplot2)
@@ -44,7 +44,7 @@ library(lubridate)
 
 artik <- artik |> drop_na() |> filter(temperature > 30) |> mutate(humidity_level = factor(if_else(humidity < 30, "Too low", "Normal")))
 
-p <- ggplot(artik, aes(x = time, y = temperature, alpha = 0.5)) + geom_point(aes(color = humidity_level)) + scale_color_manual(values = c("Too low" = "firebrick1", "Normal" = "steelblue1")) + theme_bw() + labs(color = "Humidity level", x = "Time", y = "Temperature") + scale_alpha_continuous(guide = "none") + scale_x_datetime(
+p <- ggplot(artik, aes(x = time, y = temperature, alpha = 0.5)) + geom_point(aes(color = humidity_level)) + scale_color_manual(values = c("Too low" = "firebrick1", "Normal" = "steelblue1")) + theme_bw() + labs(title="Humidity level in Artik", subtitle="Humidity levels are more lower than normal", color = "Humidity level", x = "Time", y = "Temperature") + scale_alpha_continuous(guide = "none") + scale_x_datetime(
     limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
     date_labels = "%b %d"
   )
@@ -55,10 +55,10 @@ ggplotly(p)
 
 ### Predicting the spread of fire
 
-We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful. In the graph below we can see the wind speed during May-July 2024. As you can see, there is not much danger. The wind speed specifically grows at the end of May and at the start of July.
+We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during May-July 2024. As you can see, there is not much danger. 
 
 ```{r message=FALSE}
-artik |> drop_na() |> ggplot(aes(x=time, y=speed)) + geom_jitter(aes(color=if_else(speed<15,"normal", "too_high"), alpha=0.5))+ scale_color_manual(values = c("normal"="black", too_high="darkred"), labels=c("normal"="Normal Speed", "too_high"="High Speed")) + scale_alpha_continuous(guide = "none") + geom_smooth(color="white") + theme_minimal() + labs(title="Wind speed in Artik", x ="Time", y="Speed", color="Wind speed danger level") + scale_x_datetime(
+artik |> drop_na() |> ggplot(aes(x=time, y=speed)) + geom_jitter(aes(color=if_else(speed<15,"normal", "too_high"), alpha=0.5))+ scale_color_manual(values = c("normal"="black", too_high="darkred"), labels=c("normal"="Normal Speed", "too_high"="High Speed")) + scale_alpha_continuous(guide = "none") + geom_smooth(color="white") + theme_minimal() + labs(title="Wind speed in Artik", x ="Time", y="Speed", color="Wind speed") + scale_x_datetime(
     limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
     date_labels = "%b %d"
   )
@@ -77,7 +77,7 @@ p_circular <- artik |> drop_na() |> mutate(direction = factor(direction, levels 
     axis.title.y = element_blank(), 
     panel.grid = element_blank(),
     plot.background = element_blank()
-  ) 
+  ) + labs(title="Wind direction counts in Artik")
 
 print(p_circular) 
 ```
