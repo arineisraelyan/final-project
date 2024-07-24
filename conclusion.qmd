@@ -5,9 +5,17 @@ execute:
   echo: false
 ---
 
+In this project, we discussed the fire risk and spread in different areas of Armenia. 
 ```{r te44s, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(dplyr)
+library(gganimate)
+library(hrbrthemes)
+library(ggplot2)
+library(gifski)
+library(lubridate)
+library(knitr)
+
 artik <- read_csv("artik.csv")
 ashotsk <- read_csv("ashotsk.csv")
 azatan <- read_csv("azatan.csv")
@@ -18,6 +26,8 @@ sevan <- read_csv("sevan.csv")
 vazgen <- read_csv("vazgen.csv")
 data <- bind_rows(artik, ashotsk, azatan, gavar, maralik, panik, sevan, vazgen) 
 
+knitr::include_graphics("humidity_danger_animation.gif")
+
 data |> drop_na() |> ggplot(aes(x=temperature, fill=device, color=device)) + geom_density(alpha=0.2) + theme_minimal() + xlim(-25, 50) + labs(fill="Area", color="Area", x="Temperature", y="Density") + scale_fill_manual(values = rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school")) + scale_color_manual(values = rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school"))
 
 ```
@@ -27,13 +37,6 @@ data |> drop_na() |> ggplot(aes(x=humidity, fill=device)) + geom_histogram(binwi
 ```
 
 ```{r tes2, message=FALSE, warning=FALSE}
-library(gganimate)
-library(hrbrthemes)
-library(ggplot2)
-library(gifski)
-library(lubridate)
-library(knitr)
-
 plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, temperature-humidity, 0), .before=1) |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device, alpha=0.5)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level", color="Device") + transition_reveal(time) + scale_x_datetime(
     limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
     date_labels = "%b %d"
@@ -42,6 +45,4 @@ plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, te
 animated_plot <- animate(plot, nframes = 100, fps = 10, renderer = gifski_renderer())
 
 anim_save("humidity_danger_animation.gif", animated_plot)
-
-knitr::include_graphics("humidity_danger_animation.gif")
 ```

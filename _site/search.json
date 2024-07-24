@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "artik.html",
-    "href": "artik.html",
-    "title": "Artik",
+    "objectID": "ashotsk.html",
+    "href": "ashotsk.html",
+    "title": "Ashotsk",
     "section": "",
-    "text": "Artik is a town in the Artik Municipality of the Shirak Province of Armenia.\nNow we will explore the fire causes probability in Artik, going through data provided by Tumo Climate Net. The graph below represents the temperature and humidity flow during May-July 2024. As you can see, there is no information in the start of June, because the device was broken. Dangerous humidity level was registered from the middle of June to the start of July.\n\n\n\n\n\n\n\n\n\nHumidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Artik when the temperature is above 30 C (May-July 2024).\n\n\n\n\n\n\n\nPredicting the spread of fire\nWe never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during May-July 2024. As you can see, there is not much danger."
-  },
-  {
-    "objectID": "conclusion.html",
-    "href": "conclusion.html",
-    "title": "Conclusion",
-    "section": "",
-    "text": "# A tibble: 62,832 × 16\n   humidity_danger  ...1 entry_id time                   uv   lux temperature\n             &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n 1               0     1        1 2024-03-06 13:57:31    NA    NA           8\n 2               0     2        2 2024-03-06 14:12:36    NA    NA           9\n 3               0     3        3 2024-03-06 14:27:41    NA    NA           9\n 4               0     4        4 2024-03-06 14:42:46    NA    NA           9\n 5               0     5        5 2024-03-06 14:57:51    NA    NA           9\n 6               0     6        6 2024-03-06 15:12:56    NA    NA           9\n 7               0     7        7 2024-03-06 15:28:01    NA    NA           8\n 8               0     8        8 2024-03-06 15:43:06    NA    NA           8\n 9               0     9        9 2024-03-06 15:58:11    NA    NA           7\n10               0    10       10 2024-03-06 16:13:16    NA    NA           6\n# ℹ 62,822 more rows\n# ℹ 9 more variables: pressure &lt;dbl&gt;, humidity &lt;dbl&gt;, pm1 &lt;dbl&gt;, pm2_5 &lt;dbl&gt;,\n#   pm10 &lt;dbl&gt;, speed &lt;dbl&gt;, rain &lt;dbl&gt;, direction &lt;chr&gt;, device &lt;chr&gt;\n\n\n# A tibble: 62,832 × 15\n    ...1 entry_id time                   uv   lux temperature pressure humidity\n   &lt;dbl&gt;    &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n 1     1        1 2024-03-06 13:57:31    NA    NA           8      618       42\n 2     2        2 2024-03-06 14:12:36    NA    NA           9      618       39\n 3     3        3 2024-03-06 14:27:41    NA    NA           9      618       40\n 4     4        4 2024-03-06 14:42:46    NA    NA           9      617       40\n 5     5        5 2024-03-06 14:57:51    NA    NA           9      617       40\n 6     6        6 2024-03-06 15:12:56    NA    NA           9      617       40\n 7     7        7 2024-03-06 15:28:01    NA    NA           8      617       41\n 8     8        8 2024-03-06 15:43:06    NA    NA           8      617       43\n 9     9        9 2024-03-06 15:58:11    NA    NA           7      617       44\n10    10       10 2024-03-06 16:13:16    NA    NA           6      617       47\n# ℹ 62,822 more rows\n# ℹ 7 more variables: pm1 &lt;dbl&gt;, pm2_5 &lt;dbl&gt;, pm10 &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   rain &lt;dbl&gt;, direction &lt;chr&gt;, device &lt;chr&gt;\n\n\nNULL"
+    "text": "Ashotsk is a village in the Ashotsk Municipality of the Shirak Province of Armenia.\n\nFire causes and risk\nNow we will explore the fire causes probability in Ashotsk, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during June-July 2024. Dangerous humidity levels were registered from the end of June to the start of July.\n\n\n\n\n\n\n\n\n\nHumidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Ashotsk when the temperature is above 30 C (June-July 2024).\n\n\n\n\n\n\n\n\nPredicting the spread of fire\nWe never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. There is not much danger.\n\n\n\n\n\n\n\n\n\nIt is important to predict the direction of fire spread as well. Here is a chart representing the count of each of wind direction. As you can see, the wind often blows from West.\n\n\n\n\n\n\n\n\n\n\n\nConclusion of Ashotsk area\nAccording to the data we explored Ashotsk is not hot and dry place, and fire cause probability is not high. The average temperature in Ashotsk in June-July is about 15.5 C, and the average humidity is about 56%, which is considered normal.\nWind speed is not that high, and it usually blows from West, so the fire probably spreads to East."
   },
   {
     "objectID": "about.html",
@@ -19,5 +12,26 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "conclusion.html",
+    "href": "conclusion.html",
+    "title": "Conclusion",
+    "section": "",
+    "text": "In this project, we discussed the fire risk and spread in different areas of Armenia."
+  },
+  {
+    "objectID": "artik.html",
+    "href": "artik.html",
+    "title": "Artik",
+    "section": "",
+    "text": "Artik is a town in the Artik Municipality of the Shirak Province of Armenia.\n\nFire causes and risk\nNow we will explore the fire causes probability in Artik, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during May-July 2024. As you can see, there is no information in the start of June, because the device was broken. Dangerous humidity levels were registered from the middle of June to the start of July.\n\n\n\n\n\n\n\n\n\nHumidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Artik when the temperature is above 30 C (May-July 2024).\n\n\n\n\n\n\n\n\nPredicting the spread of fire\nWe never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during May-July 2024. As you can see, there is not much danger, only at the end of May and at the start of July.\n\n\n\n\n\n\n\n\n\nIt is important to predict the direction of fire spread as well. Here is a chart representing the count of each of wind direction. As you can see, the wind often blows from East and South-East.\n\n\n\n\n\n\n\n\n\n\n\nConclusion of Artik area\nAccording to the data we explored, Artik is not that hot and dry place, and fire cause probability is normal. The average temperature in Artik in May-July is about 19.7 C, and the average humidity is about 55.9%, which is considered normal.\nWind speed is not that high, and it usually blows from East and South-East, so the fire probably spreads to West and North-West."
+  },
+  {
+    "objectID": "azatan.html",
+    "href": "azatan.html",
+    "title": "Azatan",
+    "section": "",
+    "text": "Azatan a village in the Akhuryan Municipality of the Shirak Province of Armenia.\n\nFire causes and risk\nNow we will explore the fire causes probability in Azatan, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during June-July 2024. Dangerous humidity levels were registered from the end of June to the start of July.\n\n\n\n\n\n\n\n\n\nHumidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Azatan when the temperature is above 30 C (June-July 2024).\n\n\n\n\n\n\n\n\nPredicting the spread of fire\nWe never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. As you can see, there is not much danger.\n\n\n\n\n\n\n\n\n\nIt is important to predict the direction of fire spread as well. Here is a chart representing the count of each of wind direction. As you can see, the wind often blows from North-East.\n\n\n\n\n\n\n\n\n\n\n\nConclusion of Artik area\nAccording to the data we explored, Azatan is not hot and dry place, and fire cause probability is normal. The average temperature in Azatan in June-July is about 22 C, and the average humidity is about 50.6%, which is considered normal.\nWind speed is not that high, and it usually blows from North-East, so the fire probably spreads to South-West."
   }
 ]

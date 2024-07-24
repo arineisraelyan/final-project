@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Azatan – Risk and spread of fire</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Risk and spread of fire</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-analysis">    
+        <li>
+    <a class="dropdown-item" href="./artik.html">
+ <span class="dropdown-text">Artik</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./ashotsk.html">
+ <span class="dropdown-text">Ashotsk</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./azatan.html">
+ <span class="dropdown-text">Azatan</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./gavar.qmd">
+ <span class="dropdown-text">Gavar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./maralik.qmd">
+ <span class="dropdown-text">Maralik</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./panik.qmd">
+ <span class="dropdown-text">Panik</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./sevan.qmd">
+ <span class="dropdown-text">Sevan</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vazgen.qmd">
+ <span class="dropdown-text">Vazgen Sargsyan school</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./conclusion.html">
+ <span class="dropdown-text">Conclusion</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./sources.html"> 
+<span class="menu-text">Sources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fire-causes-and-risk" id="toc-fire-causes-and-risk" class="nav-link active" data-scroll-target="#fire-causes-and-risk">Fire causes and risk</a></li>
+  <li><a href="#predicting-the-spread-of-fire" id="toc-predicting-the-spread-of-fire" class="nav-link" data-scroll-target="#predicting-the-spread-of-fire">Predicting the spread of fire</a></li>
+  <li><a href="#conclusion-of-artik-area" id="toc-conclusion-of-artik-area" class="nav-link" data-scroll-target="#conclusion-of-artik-area">Conclusion of Artik area</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Azatan</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Azatan a village in the Akhuryan Municipality of the Shirak Province of Armenia.</p>
+<section id="fire-causes-and-risk" class="level3">
+<h3 class="anchored" data-anchor-id="fire-causes-and-risk">Fire causes and risk</h3>
+<p>Now we will explore the fire causes probability in Azatan, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during June-July 2024. Dangerous humidity levels were registered from the end of June to the start of July.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="azatan_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Humidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Azatan when the temperature is above 30 C (June-July 2024).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-dd032cfa969547ccc440" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-dd032cfa969547ccc440">{"x":{"data":[{"x":[null,1720021796.8790131,1720024497.037632,1720099209.9641719,1720209600,1720252800,1720253700,1720257300,1720258200,1720287900,1720288800,1720289700,1720290600,1720291500,1720350900,1720359000,1720362600,1720363500,1720364400,1720365300,1720366200,1720367100,1720368000,1720368900,1720439100,1720441800,1720443600,1720530900,1720531800,1720532700,1720534500,1720540800,1720541700,1720542600,1720543500,1720544400,1720545300],"y":[31.079999999999998,30.16,30.379999999999999,30.239999999999998,30.66,30.829999999999998,30.690000000000001,30.34,30.030000000000001,32.390000000000001,31.93,31.489999999999998,30.84,30.100000000000001,30.210000000000001,30.140000000000001,30.25,30.420000000000002,30.539999999999999,30.890000000000001,30.010000000000002,30.530000000000001,30.920000000000002,31,30.140000000000001,31.390000000000001,30.879999999999999,31.149999999999999,30.870000000000001,31.91,31.289999999999999,31.469999999999999,31.289999999999999,31.370000000000001,31.77,30.34,30.41],"text":["time: 2024-06-21 14:10:13<br />temperature: 31.08<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-03 15:49:56<br />temperature: 30.16<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-03 16:34:57<br />temperature: 30.38<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-04 13:20:09<br />temperature: 30.24<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-05 20:00:00<br />temperature: 30.66<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 08:00:00<br />temperature: 30.83<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 08:15:00<br />temperature: 30.69<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 09:15:00<br />temperature: 30.34<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 09:30:00<br />temperature: 30.03<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 17:45:00<br />temperature: 32.39<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 18:00:00<br />temperature: 31.93<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 18:15:00<br />temperature: 31.49<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 18:30:00<br />temperature: 30.84<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-06 18:45:00<br />temperature: 30.10<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 11:15:00<br />temperature: 30.21<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 13:30:00<br />temperature: 30.14<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 14:30:00<br />temperature: 30.25<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 14:45:00<br />temperature: 30.42<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 15:00:00<br />temperature: 30.54<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 15:15:00<br />temperature: 30.89<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 15:30:00<br />temperature: 30.01<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 15:45:00<br />temperature: 30.53<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 16:00:00<br />temperature: 30.92<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-07 16:15:00<br />temperature: 31.00<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-08 11:45:00<br />temperature: 30.14<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-08 12:30:00<br />temperature: 31.39<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-08 13:00:00<br />temperature: 30.88<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 13:15:00<br />temperature: 31.15<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 13:30:00<br />temperature: 30.87<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 13:45:00<br />temperature: 31.91<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 14:15:00<br />temperature: 31.29<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 16:00:00<br />temperature: 31.47<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 16:15:00<br />temperature: 31.29<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 16:30:00<br />temperature: 31.37<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 16:45:00<br />temperature: 31.77<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 17:00:00<br />temperature: 30.34<br />alpha: 0.5<br />humidity_level: Normal","time: 2024-07-09 17:15:00<br />temperature: 30.41<br />alpha: 0.5<br />humidity_level: Normal"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(99,184,255,1)","opacity":0.55000000000000004,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(99,184,255,1)"}},"hoveron":"points","name":"Normal","legendgroup":"Normal","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null,1719583847.4471569,1719587447.906729,1719588347.953299,1719591948.319181,1719593748.521759,1720025397.0864949,1720102810.2848661,1720103710.3788781,1720105200,1720106100,1720107000,1720107900,1720108800,1720109700,1720110600,1720111500,1720112400,1720113300,1720114200,1720115100,1720116000,1720116900,1720117800,1720118700,1720119600,1720120500,1720175400,1720177200,1720178100,1720179000,1720179900,1720180800,1720181700,1720182600,1720183500,1720184400,1720185300,1720186200,1720187100,1720188000,1720188900,1720189800,1720190700,1720191600,1720192500,1720193400,1720194300,1720195200,1720196100,1720197000,1720197900,1720198800,1720199700,1720200600,1720201500,1720202400,1720203300,1720204200,1720205100,1720206000,1720206900,1720208700,1720259100,1720260000,1720260900,1720261800,1720262700,1720263600,1720264500,1720265400,1720266300,1720267200,1720268100,1720269000,1720269900,1720270800,1720271700,1720272600,1720273500,1720274400,1720276200,1720277100,1720278000,1720278900,1720279800,1720280700,1720281600,1720282500,1720283400,1720284300,1720285200,1720286100,1720287000,1720533600,1720535401,1720536300,1720537200,1720538100,1720539000,1720539900],"y":[30.629999999999999,31.010000000000002,31.66,30.219999999999999,31.370000000000001,31.399999999999999,30.940000000000001,30.510000000000002,30.289999999999999,31.640000000000001,31.27,31.469999999999999,32.340000000000003,32.060000000000002,34.009999999999998,34.009999999999998,33.18,30.940000000000001,30.68,34.259999999999998,33.479999999999997,33.439999999999998,33.670000000000002,31.57,30.440000000000001,30.539999999999999,30.670000000000002,30.879999999999999,30.890000000000001,30.629999999999999,32.219999999999999,31.039999999999999,32.140000000000001,33.640000000000001,32.210000000000001,32.109999999999999,33.259999999999998,34.869999999999997,33.649999999999999,34.689999999999998,34.030000000000001,36.560000000000002,35.140000000000001,36.189999999999998,34.859999999999999,36.219999999999999,36.640000000000001,37.590000000000003,38.619999999999997,36.689999999999998,36.909999999999997,38.240000000000002,36.280000000000001,38.75,39.469999999999999,40.600000000000001,40.560000000000002,38.340000000000003,38.200000000000003,38.159999999999997,36.789999999999999,36.530000000000001,32.920000000000002,30.91,31.850000000000001,32.659999999999997,33.020000000000003,32.960000000000001,33.100000000000001,33.960000000000001,33.280000000000001,33.939999999999998,33.880000000000003,34.409999999999997,33.829999999999998,34.130000000000003,34.020000000000003,34.850000000000001,34.119999999999997,34.18,34.829999999999998,34.890000000000001,35.159999999999997,35.380000000000003,35.520000000000003,34.719999999999999,33.810000000000002,33.590000000000003,34.049999999999997,33.619999999999997,34.079999999999998,33.420000000000002,33.460000000000001,33,31.690000000000001,33.43,31.949999999999999,30.219999999999999,30.449999999999999,32.850000000000001,30.640000000000001],"text":["time: 2024-06-27 16:40:34<br />temperature: 30.63<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-28 14:10:47<br />temperature: 31.01<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-28 15:10:47<br />temperature: 31.66<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-28 15:25:47<br />temperature: 30.22<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-28 16:25:48<br />temperature: 31.37<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-28 16:55:48<br />temperature: 31.40<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-03 16:49:57<br />temperature: 30.94<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 14:20:10<br />temperature: 30.51<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 14:35:10<br />temperature: 30.29<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 15:00:00<br />temperature: 31.64<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 15:15:00<br />temperature: 31.27<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 15:30:00<br />temperature: 31.47<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 15:45:00<br />temperature: 32.34<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 16:00:00<br />temperature: 32.06<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 16:15:00<br />temperature: 34.01<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 16:30:00<br />temperature: 34.01<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 16:45:00<br />temperature: 33.18<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 17:00:00<br />temperature: 30.94<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 17:15:00<br />temperature: 30.68<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 17:30:00<br />temperature: 34.26<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 17:45:00<br />temperature: 33.48<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 18:00:00<br />temperature: 33.44<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 18:15:00<br />temperature: 33.67<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 18:30:00<br />temperature: 31.57<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 18:45:00<br />temperature: 30.44<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 19:00:00<br />temperature: 30.54<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-04 19:15:00<br />temperature: 30.67<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 10:30:00<br />temperature: 30.88<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:00:00<br />temperature: 30.89<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:15:00<br />temperature: 30.63<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:30:00<br />temperature: 32.22<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:45:00<br />temperature: 31.04<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:00:00<br />temperature: 32.14<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:15:00<br />temperature: 33.64<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:30:00<br />temperature: 32.21<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:45:00<br />temperature: 32.11<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 13:00:00<br />temperature: 33.26<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 13:15:00<br />temperature: 34.87<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 13:30:00<br />temperature: 33.65<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 13:45:00<br />temperature: 34.69<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 14:00:00<br />temperature: 34.03<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 14:15:00<br />temperature: 36.56<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 14:30:00<br />temperature: 35.14<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 14:45:00<br />temperature: 36.19<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:00:00<br />temperature: 34.86<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:15:00<br />temperature: 36.22<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:30:00<br />temperature: 36.64<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:45:00<br />temperature: 37.59<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 16:00:00<br />temperature: 38.62<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 16:15:00<br />temperature: 36.69<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 16:30:00<br />temperature: 36.91<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 16:45:00<br />temperature: 38.24<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 17:00:00<br />temperature: 36.28<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 17:15:00<br />temperature: 38.75<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 17:30:00<br />temperature: 39.47<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 17:45:00<br />temperature: 40.60<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 18:00:00<br />temperature: 40.56<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 18:15:00<br />temperature: 38.34<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 18:30:00<br />temperature: 38.20<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 18:45:00<br />temperature: 38.16<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 19:00:00<br />temperature: 36.79<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 19:15:00<br />temperature: 36.53<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 19:45:00<br />temperature: 32.92<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 09:45:00<br />temperature: 30.91<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 10:00:00<br />temperature: 31.85<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 10:15:00<br />temperature: 32.66<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 10:30:00<br />temperature: 33.02<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 10:45:00<br />temperature: 32.96<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 11:00:00<br />temperature: 33.10<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 11:15:00<br />temperature: 33.96<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 11:30:00<br />temperature: 33.28<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 11:45:00<br />temperature: 33.94<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 12:00:00<br />temperature: 33.88<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 12:15:00<br />temperature: 34.41<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 12:30:00<br />temperature: 33.83<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 12:45:00<br />temperature: 34.13<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 13:00:00<br />temperature: 34.02<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 13:15:00<br />temperature: 34.85<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 13:30:00<br />temperature: 34.12<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 13:45:00<br />temperature: 34.18<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 14:00:00<br />temperature: 34.83<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 14:30:00<br />temperature: 34.89<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 14:45:00<br />temperature: 35.16<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 15:00:00<br />temperature: 35.38<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 15:15:00<br />temperature: 35.52<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 15:30:00<br />temperature: 34.72<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 15:45:00<br />temperature: 33.81<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 16:00:00<br />temperature: 33.59<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 16:15:00<br />temperature: 34.05<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 16:30:00<br />temperature: 33.62<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 16:45:00<br />temperature: 34.08<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 17:00:00<br />temperature: 33.42<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 17:15:00<br />temperature: 33.46<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-06 17:30:00<br />temperature: 33.00<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 14:00:00<br />temperature: 31.69<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 14:30:01<br />temperature: 33.43<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 14:45:00<br />temperature: 31.95<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 15:00:00<br />temperature: 30.22<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 15:15:00<br />temperature: 30.45<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 15:30:00<br />temperature: 32.85<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-09 15:45:00<br />temperature: 30.64<br />alpha: 0.5<br />humidity_level: Too low"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,48,48,1)","opacity":0.55000000000000004,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,48,48,1)"}},"hoveron":"points","name":"Too low","legendgroup":"Too low","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":48.949771689497723},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Humidity level in Azatan","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1719466560,1720607040],"tickmode":"array","ticktext":["Jun 29","Jul 01","Jul 03","Jul 05","Jul 07","Jul 09"],"tickvals":[1719619200,1719792000,1719964800,1720137600,1720310400,1720483200],"categoryorder":"array","categoryarray":["Jun 29","Jul 01","Jul 03","Jul 05","Jul 07","Jul 09"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Time","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[29.480500000000003,41.1295],"tickmode":"array","ticktext":["30.0","32.5","35.0","37.5","40.0"],"tickvals":[30,32.5,35,37.5,40],"categoryorder":"array","categoryarray":["30.0","32.5","35.0","37.5","40.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Temperature","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Humidity level","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"15d4e5242f9c3":{"x":{},"y":{},"alpha":{},"colour":{},"type":"scatter"}},"cur_data":"15d4e5242f9c3","visdat":{"15d4e5242f9c3":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="predicting-the-spread-of-fire" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-the-spread-of-fire">Predicting the spread of fire</h3>
+<p>We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. As you can see, there is not much danger.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="azatan_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is important to predict the direction of fire spread as well. Here is a chart representing the count of each of wind direction. As you can see, the wind often blows from North-East.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="azatan_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion-of-artik-area" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-of-artik-area">Conclusion of Artik area</h3>
+<p>According to the data we explored, Azatan is not hot and dry place, and fire cause probability is normal. The average temperature in Azatan in June-July is about 22 C, and the average humidity is about 50.6%, which is considered normal.</p>
+<p>Wind speed is not that high, and it usually blows from North-East, so the fire probably spreads to South-West.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

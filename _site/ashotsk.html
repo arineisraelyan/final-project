@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sources – Risk and spread of fire</title>
+<title>Ashotsk – Risk and spread of fire</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +66,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -106,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Ashotsk</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./azatan.qmd">
+    <a class="dropdown-item" href="./azatan.html">
  <span class="dropdown-text">Azatan</span></a>
   </li>  
         <li>
@@ -136,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="./sources.html" aria-current="page"> 
+    <a class="nav-link" href="./sources.html"> 
 <span class="menu-text">Sources</span></a>
   </li>  
   <li class="nav-item">
@@ -154,15 +163,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fire-causes-and-risk" id="toc-fire-causes-and-risk" class="nav-link active" data-scroll-target="#fire-causes-and-risk">Fire causes and risk</a></li>
+  <li><a href="#predicting-the-spread-of-fire" id="toc-predicting-the-spread-of-fire" class="nav-link" data-scroll-target="#predicting-the-spread-of-fire">Predicting the spread of fire</a></li>
+  <li><a href="#conclusion-of-ashotsk-area" id="toc-conclusion-of-ashotsk-area" class="nav-link" data-scroll-target="#conclusion-of-ashotsk-area">Conclusion of Ashotsk area</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sources</h1>
+<h1 class="title">Ashotsk</h1>
 </div>
 
 
@@ -179,8 +196,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Ashotsk is a village in the Ashotsk Municipality of the Shirak Province of Armenia.</p>
+<section id="fire-causes-and-risk" class="level3">
+<h3 class="anchored" data-anchor-id="fire-causes-and-risk">Fire causes and risk</h3>
+<p>Now we will explore the fire causes probability in Ashotsk, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during June-July 2024. Dangerous humidity levels were registered from the end of June to the start of July.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ashotsk_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Humidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Ashotsk when the temperature is above 30 C (June-July 2024).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b8328a175dfa0f773ba9" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b8328a175dfa0f773ba9">{"x":{"data":[{"x":[1719310080.5986919,1719310980.6011691,1719311880.7034471,1719313680.9045839,1719314581.0011611,1719316534.9290149,1720177200,1720178100,1720179000,1720179900,1720180800,1720181700,1720182600,1720183500,1720184400,1720185300,1720188900,1720189800,1720192500,1720193400,1720194300,1720195200,1720198800,1720199700,1720707300,1720708200,1720710900,1720711800],"y":[31.039999999999999,31.359999999999999,30.25,32.170000000000002,31.32,31.920000000000002,32.210000000000001,33.090000000000003,32.969999999999999,32.149999999999999,31.399999999999999,30.77,31.010000000000002,32.119999999999997,32.509999999999998,31.149999999999999,32.460000000000001,32.829999999999998,30.359999999999999,33.369999999999997,31.800000000000001,32.390000000000001,31.920000000000002,30.210000000000001,30.850000000000001,30.170000000000002,31.23,30.91],"text":["time: 2024-06-25 10:08:00<br />temperature: 31.04<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-25 10:23:00<br />temperature: 31.36<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-25 10:38:00<br />temperature: 30.25<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-25 11:08:00<br />temperature: 32.17<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-25 11:23:01<br />temperature: 31.32<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-06-25 11:55:34<br />temperature: 31.92<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:00:00<br />temperature: 32.21<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:15:00<br />temperature: 33.09<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:30:00<br />temperature: 32.97<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 11:45:00<br />temperature: 32.15<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:00:00<br />temperature: 31.40<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:15:00<br />temperature: 30.77<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:30:00<br />temperature: 31.01<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 12:45:00<br />temperature: 32.12<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 13:00:00<br />temperature: 32.51<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 13:15:00<br />temperature: 31.15<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 14:15:00<br />temperature: 32.46<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 14:30:00<br />temperature: 32.83<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:15:00<br />temperature: 30.36<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:30:00<br />temperature: 33.37<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 15:45:00<br />temperature: 31.80<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 16:00:00<br />temperature: 32.39<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 17:00:00<br />temperature: 31.92<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-05 17:15:00<br />temperature: 30.21<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-11 14:15:00<br />temperature: 30.85<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-11 14:30:00<br />temperature: 30.17<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-11 15:15:00<br />temperature: 31.23<br />alpha: 0.5<br />humidity_level: Too low","time: 2024-07-11 15:30:00<br />temperature: 30.91<br />alpha: 0.5<br />humidity_level: Too low"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,48,48,1)","opacity":0.55000000000000004,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,48,48,1)"}},"hoveron":"points","name":"Too low","legendgroup":"Too low","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":37.260273972602747},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Humidity level in Ashotsk","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1718719200,1721095200],"tickmode":"array","ticktext":["Jun 24","Jul 01","Jul 08","Jul 15"],"tickvals":[1719187200,1719792000,1720396800,1721001600],"categoryorder":"array","categoryarray":["Jun 24","Jul 01","Jul 08","Jul 15"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Time","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[30.010000000000002,33.529999999999994],"tickmode":"array","ticktext":["31","32","33"],"tickvals":[31,32,33],"categoryorder":"array","categoryarray":["31","32","33"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Temperature","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Humidity level","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"164d63c412fc6":{"x":{},"y":{},"alpha":{},"colour":{},"type":"scatter"}},"cur_data":"164d63c412fc6","visdat":{"164d63c412fc6":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="predicting-the-spread-of-fire" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-the-spread-of-fire">Predicting the spread of fire</h3>
+<p>We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. There is not much danger.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ashotsk_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is important to predict the direction of fire spread as well. Here is a chart representing the count of each of wind direction. As you can see, the wind often blows from West.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ashotsk_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion-of-ashotsk-area" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-of-ashotsk-area">Conclusion of Ashotsk area</h3>
+<p>According to the data we explored Ashotsk is not hot and dry place, and fire cause probability is not high. The average temperature in Ashotsk in June-July is about 15.5 C, and the average humidity is about 56%, which is considered normal.</p>
+<p>Wind speed is not that high, and it usually blows from West, so the fire probably spreads to East.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -275,7 +341,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/arineisraelyan\.quarto\.pub\/final-project");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
