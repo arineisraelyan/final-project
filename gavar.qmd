@@ -1,0 +1,101 @@
+---
+title: "Gavar"
+editor: visual
+execute:
+  echo: false
+  warning: false
+---
+
+```{r message=FALSE}
+library(tidyverse)
+gavar <- read_csv("gavar.csv")
+```
+
+Gavar is a town in Armenia serving as the administrative centre of the Gavar Municipality and the Gegharkunik Province.
+
+### Fire causes and risk
+Now we will explore the fire causes probability in Gavar, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during June-July 2024. 
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+p1 <- gavar |> drop_na() |> ggplot(aes(x=time, y=temperature)) + geom_line(color="darkblue") + geom_smooth(color="white") + theme_minimal() + labs(subtitle="Dangerous humidity levels were registered in the middle of June", x=NULL, y="Temperatue", title="Temperature and Humidity in Gavar") + scale_x_datetime(
+    limits = c(as.POSIXct("2024-06-18 00:00"), as.POSIXct("2024-07-13 00:00")),
+    date_labels = "%b %d"
+  )
+
+p2 <- gavar |> drop_na() |> ggplot(aes(x=time, y=humidity)) + geom_line(aes(color=if_else(humidity<30,"too_low", "normal")))+ scale_color_manual(values = c("too_low"="red", normal="orange"), guide="none") + theme_minimal() + labs(x="Time", y="Humidity") + scale_x_datetime(
+    limits = c(as.POSIXct("2024-06-18 00:00"), as.POSIXct("2024-07-13 00:00")),
+    date_labels = "%b %d"
+  )
+
+combined_plot <- p1/p2
+
+print(combined_plot)
+```
+
+Humidity level is considered to be low when lower than 30 percents. The graph below represents the humidity level in Gavar when the temperature is above 30 C (June-July 2024).
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(lubridate)
+
+p <- gavar |> drop_na() |> filter(temperature > 30) |> mutate(humidity_level = factor(if_else(humidity < 30, "Too low", "Normal"))) |> ggplot(aes(x = time, y = temperature, alpha = 0.5)) + geom_point(aes(color = humidity_level)) + scale_color_manual(values = c("Too low" = "firebrick1", "Normal" = "steelblue1")) + theme_bw() + labs(title="Humidity level in Gavar", subtitle="Humidity levels are often lower than normal", color = "Humidity level", x = "Time", y = "Temperature") + scale_alpha_continuous(guide = "none") + scale_x_datetime(
+    limits = c(as.POSIXct("2024-06-18 00:00"), as.POSIXct("2024-07-13 00:00")),
+    date_labels = "%b %d"
+  )
+
+ggplotly(p)
+
+```
+
+### Predicting the spread of fire
+
+We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. There is not much danger.
+
+```{r message=FALSE}
+gavar |> drop_na() |> ggplot(aes(x=time, y=speed)) + geom_jitter(aes(color=if_else(speed<15,"normal", "too_high"), alpha=0.5))+ scale_color_manual(values = c("normal"="black", too_high="darkred"), labels=c("normal"="Normal Speed", "too_high"="High Speed")) + scale_alpha_continuous(guide = "none") + geom_smooth(color="white") + theme_minimal() + labs(title="Wind speed in Artik", x ="Time", y="Speed", color="Wind speed") + scale_x_datetime(
+    limits = c(as.POSIXct("2024-06-18 00:00"), as.POSIXct("2024-07-13 00:00")),
+    date_labels = "%b %d"
+  )
+```
+
+It is important to predict the direction of fire spread as well. Here is a chart representing the count of each of wind direction. As you can see, the wind often blows from North, East and South-West.
+
+```{r message=FALSE}
+order <- c("NE", "E", "SE", "S", "SW", "W", "NW", "N")
+
+p_circular <- gavar |> drop_na() |> mutate(direction = factor(direction, levels = order)) |>
+  ggplot(aes(x=as.factor(direction))) + 
+  geom_bar(fill="skyblue4") + coord_polar(start = 0) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+    axis.title.x = element_blank(),  
+    axis.title.y = element_blank(), 
+    panel.grid = element_blank(),
+    plot.background = element_blank()
+  ) + labs(title="Wind direction counts in Gavar", subtitle="The wind often blows from North, East and South-West")
+
+print(p_circular) 
+
+start_date <- as.POSIXct('2024-06-18 00:00')
+end_date <- as.POSIXct('2024-07-13 00:00')
+
+filtered_data <- gavar |>
+  filter(time >= start_date & time <= end_date)
+
+column_values <- filtered_data[["humidity"]]
+column_values_numeric <- as.numeric(column_values)
+mean_value <- mean(column_values_numeric, na.rm = TRUE)
+#print(mean_value)
+```
+
+### Conclusion of Artik area
+
+According to the data we explored, Gavar is not that hot and dry place, and fire cause probability is normal. The average temperature in Gavar in June-July is about 16.5 C, and the average humidity is about 64.3%, which is considered normal. 
+
+Wind speed is not that high, and it usually blows from North, East and South-West, so the fire probably spreads to South, West and North-East.
