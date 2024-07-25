@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this project, we discussed the fire risk and spread in different areas of Armenia.</p>
+<p>In this project, we discussed the fire risk and spread of fire in different areas of Armenia.</p>
 <p>Now we will decide where is the most likely to start fire. To do that, we should find the highest average temperature and lowest average humidity.</p>
 <p>In the graph below, you can see humidity danger levels (when the temperature is above 30 C) of each area we discussed about. The highest humidity danger levels were registered in Vazgen Sargsyan school area in Yerevan.</p>
 <div class="cell">
@@ -191,6 +191,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The chart below shows density of temperature in each area. The highest average temperature was registered in Vazgen Sargsyan school area (24.3 C).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -200,6 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The next chart shows the count of humidity of each area. 100% means that it was raining. The lowest average one is Vazgen Sargsyan school area (36.2%).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -209,6 +211,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Although the data we explored was not enough to make decisions, but according to it the driest and hottest place in Late Spring-Summer among the places we discussed is Vazgen Sargsyan school area in Yerevan. Among the places we explored it is more likely to start fire in <strong>Vazgen Sargsyan school area</strong>.</p>
 
 
 
@@ -305,7 +308,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/arineisraelyan\.quarto\.pub\/final-project");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

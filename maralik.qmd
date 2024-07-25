@@ -32,6 +32,8 @@ p2 <- maralik |> drop_na() |> ggplot(aes(x=time, y=humidity)) + geom_line(aes(co
   )
 
 combined_plot <- p1/p2
+#ggsave(combined_plot, filename="maralik_first.pdf", limitsize = FALSE)
+#knitr::include_graphics("maralik_first.pdf")
 
 print(combined_plot)
 ```

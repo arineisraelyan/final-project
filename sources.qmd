@@ -2,3 +2,5 @@
 title: "Sources"
 editor: visual
 ---
+
+This project used data provided by Tumo Climate Net (Artik, Ashotsk, Azatan, Gavar, Maralik, Panik, Sevan, Vazgen Sargsyan school). 

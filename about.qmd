@@ -2,4 +2,6 @@
 title: "About"
 ---
 
-About this site
+Hi, my name is Arine Israelyan, a high school student. This project was compiled as the final project of the workshop “Discovering Climate Change through Data Science, Christopher Patvakanian” at Tumo Kapan. I love programming, I have learned Python, JS, basic information about languages like C and currently learning R. I also know about robotics, I have learned Arduino and Scratch.
+
+My github: [https://github.com/arineisraelyan](https://github.com/arineisraelyan)
