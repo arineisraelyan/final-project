@@ -5,7 +5,12 @@ execute:
   echo: false
 ---
 
-In this project, we discussed the fire risk and spread in different areas of Armenia. 
+In this project, we discussed the fire risk and spread in different areas of Armenia.
+
+Now we will decide where is the most likely to start fire. To do that, we should find the highest average temperature and lowest average humidity.
+
+In the graph below, you can see humidity danger levels (when the temperature is above 30 C) of each area we discussed about. The highest humidity danger levels were registered in Vazgen Sargsyan school area in Yerevan.
+
 ```{r te44s, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(dplyr)
@@ -27,22 +32,21 @@ vazgen <- read_csv("vazgen.csv")
 data <- bind_rows(artik, ashotsk, azatan, gavar, maralik, panik, sevan, vazgen) 
 
 knitr::include_graphics("humidity_danger_animation.gif")
-
-data |> drop_na() |> ggplot(aes(x=temperature, fill=device, color=device)) + geom_density(alpha=0.2) + theme_minimal() + xlim(-25, 50) + labs(fill="Area", color="Area", x="Temperature", y="Density") + scale_fill_manual(values = rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school")) + scale_color_manual(values = rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school"))
-
 ```
 
+```{r message=FALSE, warning=FALSE}
+data |> drop_na() |> ggplot(aes(x=temperature, fill=device, color=device)) + geom_density(alpha=0.2) + theme_minimal() + xlim(-25, 50) + labs(fill="Area", color="Area", x="Temperature", y="Density", title="Density of temperature in different areas", subtitle="The highest average temperature was registered in Vazgen Sargsyan school area") + scale_fill_manual(values = rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school")) + scale_color_manual(values = rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school"))
+```
+
+
 ```{r tes3, message=FALSE, warning=FALSE}
-data |> drop_na() |> ggplot(aes(x=humidity, fill=device)) + geom_histogram(binwidth=1) + labs(fill="Area", color="Area", x="Humidity", y="Density") + scale_fill_manual(values=rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school")) + theme_minimal() 
+data |> drop_na() |> ggplot(aes(x=humidity, fill=device)) + geom_histogram(binwidth=1) + labs(fill="Area", color="Area", x="Humidity", y="Count", title="Humidity counts in different areas", subtitle="The lowest average huimidity was registered in Vazgen Sargsyan school") + scale_fill_manual(values=rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school")) + theme_minimal() 
 ```
 
 ```{r tes2, message=FALSE, warning=FALSE}
-plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, temperature-humidity, 0), .before=1) |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device, alpha=0.5)) + geom_line() + geom_point() + ggtitle("Humidity danger level in different areas") + theme_ipsum() + labs(x="Time", y="Danger level", color="Device") + transition_reveal(time) + scale_x_datetime(
-    limits = c(as.POSIXct("2024-05-23 00:00"), as.POSIXct("2024-07-15 00:00")),
-    date_labels = "%b %d"
-  ) + scale_alpha_continuous(guide = "none") + scale_color_manual(values=rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school"))
+#plot <- data |> mutate(humidity_danger=ifelse(humidity < 30 & temperature>30, temperature-humidity, 0), .before=1) |> ggplot(mapping=aes(x=time, y=humidity_danger, group=device, color=device, alpha=0.5)) + geom_line() + geom_point() + ggtitle("Humidity danger levels in different areas") + theme_ipsum() + labs(x="Time", y="Danger level", color="Device", subtitle="The highest humidity danger levels were registered in Vazgen Sargsyan school area in Yerevan") + transition_reveal(time) + scale_x_datetime(limits = c(as.POSIXct("2024-06-01 00:00"), as.POSIXct("2024-07-15 00:00")), date_labels = "%b %d") + scale_alpha_continuous(guide = "none") + scale_color_manual(values=rainbow(8), labels = c("Vazgen_Sargsyan" = "Vazgen Sargsyan school"))
 
-animated_plot <- animate(plot, nframes = 100, fps = 10, renderer = gifski_renderer())
+#animated_plot <- animate(plot, nframes = 100, fps = 10, renderer = gifski_renderer())
 
-anim_save("humidity_danger_animation.gif", animated_plot)
+#anim_save("humidity_danger_animation.gif", animated_plot)
 ```

@@ -11,9 +11,10 @@ library(tidyverse)
 azatan <- read_csv("azatan.csv")
 ```
 
-Azatan a village in the Akhuryan Municipality of the Shirak Province of Armenia. 
+Azatan a village in the Akhuryan Municipality of the Shirak Province of Armenia.
 
 ### Fire causes and risk
+
 Now we will explore the fire causes probability in Azatan, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during June-July 2024. Dangerous humidity levels were registered from the end of June to the start of July.
 
 ```{r message=FALSE}
@@ -54,7 +55,7 @@ ggplotly(p)
 
 ### Predicting the spread of fire
 
-We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. As you can see, there is not much danger. 
+We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. As you can see, there is not much danger.
 
 ```{r message=FALSE}
 azatan |> drop_na() |> ggplot(aes(x=time, y=speed)) + geom_jitter(aes(color=if_else(speed<15,"normal", "too_high"), alpha=0.5))+ scale_color_manual(values = c("normal"="black", too_high="darkred"), labels=c("normal"="Normal Speed", "too_high"="High Speed")) + scale_alpha_continuous(guide = "none") + geom_smooth(color="white") + theme_minimal() + labs(title="Wind speed in Azatan", x ="Time", y="Speed", color="Wind speed") + scale_x_datetime(
@@ -94,9 +95,8 @@ mean_value <- mean(column_values_numeric, na.rm = TRUE)
 #print(mean_value)
 ```
 
-### Conclusion of Artik area
+### Conclusion of Azatan area
 
-According to the data we explored, Azatan is not hot and dry place, and fire cause probability is normal. The average temperature in Azatan in June-July is about 22 C, and the average humidity is about 50.6%, which is considered normal. 
+According to the data we explored, Azatan is not hot and dry place, and fire cause probability is normal. The average temperature in Azatan in June-July is about 22 C, and the average humidity is about 50.6%, which is considered normal.
 
 Wind speed is not that high, and it usually blows from North-East, so the fire probably spreads to South-West.
-

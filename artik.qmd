@@ -14,6 +14,7 @@ artik <- read_csv("artik.csv")
 Artik is a town in the Artik Municipality of the Shirak Province of Armenia.
 
 ### Fire causes and risk
+
 Now we will explore the fire causes probability in Artik, going through data provided by Tumo Climate Net. The main climate features that can cause fire are temperature and humidity. The fire cause probability is higher when the temperature is high and humidity is low. The graph below represents the temperature and humidity flow during May-July 2024. As you can see, there is no information in the start of June, because the device was broken. Dangerous humidity levels were registered from the middle of June to the start of July.
 
 ```{r message=FALSE}
@@ -96,6 +97,6 @@ mean_value <- mean(column_values_numeric, na.rm = TRUE)
 
 ### Conclusion of Artik area
 
-According to the data we explored, Artik is not that hot and dry place, and fire cause probability is normal. The average temperature in Artik in May-July is about 19.7 C, and the average humidity is about 55.9%, which is considered normal. 
+According to the data we explored, Artik is not that hot and dry place, and fire cause probability is normal. The average temperature in Artik in May-July is about 19.7 C, and the average humidity is about 55.9%, which is considered normal.
 
 Wind speed is not that high, and it usually blows from East and South-East, so the fire probably spreads to West and North-West.
