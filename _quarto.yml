@@ -4,6 +4,7 @@ project:
 website:
   title: "Risk and spread of fire"
   navbar:
+    background: dark
     left:
       - href: index.qmd
         text: Home
@@ -30,6 +31,21 @@ website:
       - href: sources.qmd
         text: "Sources"
       - about.qmd
+  sidebar:
+    style: "floating"
+    contents:
+      - section: "Areas"
+        contents:
+          - artik.qmd
+          - ashotsk.qmd
+          - azatan.qmd
+          - gavar.qmd
+          - maralik.qmd
+          - panik.qmd
+          - sevan.qmd
+          - href: vazgen.qmd
+            text: Vazgen Sargsyan school
+      - href: conclusion.qmd
 
 format:
   html:

@@ -109,5 +109,5 @@ knitr::include_graphics("vazgen_direction.png")
 
 According to the data we explored, Vazgen Sargsyan school area is not that hot and dry place, and fire cause probability is normal. The average temperature at Vazgen Sargsyan school area in June-July is about 24.3 C, and the average humidity is about 36.2%, which is considered normal, but close to 30%.
 
-Wind speed is not that high, and it usually blows from North-East and South-West, so the fire probably spreads to South-Wesdt and North-East.
+Wind speed is not that high, and it usually blows from North-East and South-West, so the fire probably spreads to South-West and North-East.
 
