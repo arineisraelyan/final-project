@@ -25,7 +25,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Hi, my name is Arine Israelyan, a high school student. This project was compiled as the final project of the workshop “Discovering Climate Change through Data Science, Christopher Patvakanian” at Tumo Kapan. I love programming, I have learned Python, JS, basic information about languages like C and currently learning R. I also know about robotics, I have learned Arduino and Scratch.\nMy github: https://github.com/arineisraelyan"
+    "text": "Hi, my name is Arine Israelyan, a high school student. This project was created as the final project of the workshop “Discovering Climate Change through Data Science, Christopher Patvakanian” at Tumo Kapan. I love programming, I have learned Python, JS, basic information about C type languages and currently learning R. I also know about robotics, I have learned Arduino and Scratch.\nMy github: https://github.com/arineisraelyan"
   },
   {
     "objectID": "sources.html",
@@ -51,7 +51,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Final",
+    "title": "Risk and spread of fire",
     "section": "",
     "text": "Welcome to Risk and spread of fire website. The goal of this site is to find the probability of starting fire and the direction of spreading fire in different areas of Armenia.\n\n\n\n\n\n\n\n\n\nWe will explore 8 areas: Artik, Ashotsk, Azatan, Gavar, Maralik, Panik, Sevan and Vazgen Sargsyan school (Yerevan). We will see which area is the driest, hottest, how does the speed of wind change over time and which direction it blows in each area. This website can help people to be aware of upcoming hot and dry weather and to know which direction will the started fire spread, to be safe and put it out more easily.\nYou can open the Data Analysis page at the top to view each area and conclusion of exploration."
   },

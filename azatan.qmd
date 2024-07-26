@@ -61,12 +61,12 @@ ggplotly(p)
 We never know when and where will start the fire, so predicting the fire spreading speed and direction would be helpful to put it out. In the graph below you can see the wind speed during June-July 2024. As you can see, there is not much danger.
 
 ```{r message=FALSE}
-windplot <- azatan |> drop_na() |> ggplot(aes(x=time, y=speed)) + geom_jitter(aes(color=if_else(speed<15,"normal", "too_high"), alpha=0.5))+ scale_color_manual(values = c("normal"="black", too_high="darkred"), labels=c("normal"="Normal Speed", "too_high"="High Speed")) + scale_alpha_continuous(guide = "none") + geom_smooth(color="white") + theme_minimal() + labs(title="Wind speed in Azatan", x ="Time", y="Speed", color="Wind speed") + scale_x_datetime(
-    limits = c(as.POSIXct("2024-06-28 00:00"), as.POSIXct("2024-07-10 00:00")),
-    date_labels = "%b %d"
-  )
-
-ggsave(windplot, filename="azatan_wind.png", limitsize = FALSE)
+# windplot <- azatan |> drop_na() |> ggplot(aes(x=time, y=speed)) + geom_jitter(aes(color=if_else(speed<15,"normal", "too_high"), alpha=0.5))+ scale_color_manual(values = c("normal"="black", too_high="darkred"), labels=c("normal"="Normal Speed", "too_high"="High Speed")) + scale_alpha_continuous(guide = "none") + geom_smooth(color="white") + theme_minimal() + labs(title="Wind speed in Azatan", x ="Time", y="Speed", color="Wind speed") + scale_x_datetime(
+#     limits = c(as.POSIXct("2024-06-28 00:00"), as.POSIXct("2024-07-10 00:00")),
+#     date_labels = "%b %d"
+#   )
+# 
+# ggsave(windplot, filename="azatan_wind.png", limitsize = FALSE)
 knitr::include_graphics("azatan_wind.png")
 ```
 
